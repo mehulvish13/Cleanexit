@@ -1,22 +1,60 @@
+/**
+ * SID - AI DATA SECURITY ASSISTANT (Chatbot Component)
+ * 
+ * Sid is our friendly AI assistant that helps users with questions about
+ * data security, pricing, compliance, and our services.
+ * 
+ * KEY FEATURES:
+ * - Floating chat button (always visible in bottom-right corner)
+ * - Persistent conversation history during session
+ * - Context-aware responses based on keywords
+ * - Personalized greetings for logged-in users
+ * - Auto-scrolls to latest message
+ * - Works for both logged-in and guest users
+ * 
+ * SMART RESPONSES:
+ * Sid detects keywords in user messages and provides relevant answers:
+ * - "price", "cost", "pricing" → Explains subscription plans
+ * - "compliance", "gdpr", "hipaa" → Details certifications
+ * - "mobile", "phone", "device" → Mobile device wiping info
+ * - "cloud", "server", "database" → Enterprise solutions
+ * - "emergency", "urgent", "breach" → Emergency response
+ * - "certificate", "proof" → Documentation info
+ * 
+ * FUTURE ENHANCEMENT:
+ * Currently uses keyword matching + random responses.
+ * Can be upgraded to GPT-4 or Claude for smarter conversations.
+ * 
+ * UI DESIGN:
+ * - Blue gradient header with Bot icon
+ * - User messages: Blue bubbles on right
+ * - Sid messages: Gray bubbles on left
+ * - Typing indicator with animated dots
+ * - Timestamp on each message
+ */
+
 import { useState, useRef, useEffect } from 'react';
 import { MessageCircle, Send, X, Bot, User } from 'lucide-react';
 import { useAuth } from '@getmocha/users-service/react';
 
+// TypeScript interface for chat messages
 interface Message {
-  id: string;
-  text: string;
-  sender: 'user' | 'sid';
-  timestamp: Date;
+  id: string;               // Unique identifier
+  text: string;             // Message content
+  sender: 'user' | 'sid';   // Who sent it
+  timestamp: Date;          // When it was sent
 }
 
 export default function Sid() {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);  // Chat window open/closed
+  
+  // Pre-loaded conversation to show users how Sid works
   const [messages, setMessages] = useState<Message[]>([
     {
       id: '1',
       text: "Hello! I'm Sid, your AI data security assistant. I'm here to help you with any questions about our secure data erasure services. How can I assist you today?",
       sender: 'sid',
-      timestamp: new Date(Date.now() - 5 * 60 * 1000)
+      timestamp: new Date(Date.now() - 5 * 60 * 1000)  // 5 minutes ago
     },
     {
       id: '2',

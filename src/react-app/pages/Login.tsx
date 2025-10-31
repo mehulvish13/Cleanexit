@@ -1,18 +1,47 @@
+/**
+ * LOGIN PAGE
+ * 
+ * This page handles user authentication via Google OAuth.
+ * 
+ * SMART FEATURES:
+ * - If user is already logged in, auto-redirects to /dashboard
+ * - Shows loading state while checking auth status
+ * - "Continue with Google" button starts OAuth flow
+ * - Back to Home button for easy navigation
+ * 
+ * HOW LOGIN WORKS:
+ * 1. User clicks "Continue with Google"
+ * 2. redirectToLogin() gets OAuth URL from backend
+ * 3. User goes to Google to sign in
+ * 4. Google redirects to /auth/callback with a code
+ * 5. Callback page exchanges code for session
+ * 6. User is redirected here, sees they're logged in
+ * 7. Auto-redirects to /dashboard
+ * 
+ * SECURITY:
+ * - Uses OAuth 2.0 (industry standard)
+ * - We never see the user's password
+ * - Session stored in HTTP-only cookie
+ */
+
 import { useAuth } from '@getmocha/users-service/react';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router';
 import { Shield, ArrowLeft } from 'lucide-react';
 
 export default function LoginPage() {
+  // Get auth state and functions from AuthProvider
   const { user, redirectToLogin, isPending } = useAuth();
   const navigate = useNavigate();
 
+  // If user is already logged in, send them to dashboard
   useEffect(() => {
     if (user) {
       navigate('/dashboard');
     }
   }, [user, navigate]);
 
+  // Show loading state while checking if user is logged in
   if (isPending) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-blue-900 via-blue-800 to-blue-700 flex items-center justify-center">

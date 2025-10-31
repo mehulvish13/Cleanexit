@@ -1,31 +1,72 @@
+/**
+ * DASHBOARD PAGE (User's Private Dashboard)
+ * 
+ * This is the authenticated user's control center after logging in.
+ * 
+ * MAIN FEATURES:
+ * 1. Subscription Overview Card
+ *    - Shows current plan (Starter/Pro/Advanced)
+ *    - Displays device credits used/remaining
+ *    - Progress bar for credit usage
+ *    - Upgrade/Change plan button
+ * 
+ * 2. Statistics Grid
+ *    - Devices Processed: 247
+ *    - Compliance Reports: 18
+ *    - Active Projects: 3
+ *    - Team Members: 12
+ * 
+ * 3. Recent Activity Feed
+ *    - Shows recent erasure jobs
+ *    - Status indicators (Completed, In Progress, Scheduled)
+ * 
+ * 4. Quick Actions Panel
+ *    - Request Data Erasure
+ *    - View Compliance Reports
+ *    - Schedule Consultation
+ * 
+ * 5. Security Score Widget
+ *    - Gamified metric showing org health (98%)
+ * 
+ * PROTECTION:
+ * - Auto-redirects to /login if not authenticated
+ * - Fetches user's subscription from backend on load
+ * - Handles logout with cleanup
+ */
+
 import { useAuth } from '@getmocha/users-service/react';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router';
 import { Shield, LogOut, FileCheck, HardDrive, Server, Users, BarChart3 } from 'lucide-react';
 import Sid from '@/react-app/components/Sid';
 
+// TypeScript interface for subscription data from API
 interface SubscriptionData {
-  plan_name: string;
-  price: number;
-  devices_limit: number;
-  devices_used: number;
-  devices_remaining: number;
-  status: string;
+  plan_name: string;           // "Starter", "Pro", or "Advanced"
+  price: number;               // Monthly cost in INR
+  devices_limit: number;       // Max devices per month (-1 = unlimited)
+  devices_used: number;        // Devices used this month
+  devices_remaining: number;   // Credits left
+  status: string;              // "active", "cancelled", "expired"
 }
 
 export default function DashboardPage() {
+  // Get auth state from AuthProvider
   const { user, logout, isPending } = useAuth();
   const navigate = useNavigate();
+  
+  // Local state for subscription data
   const [subscription, setSubscription] = useState<SubscriptionData | null>(null);
   const [loadingSubscription, setLoadingSubscription] = useState(true);
 
+  // Redirect to login if user is not authenticated
   useEffect(() => {
     if (!isPending && !user) {
       navigate('/login');
     }
   }, [user, isPending, navigate]);
 
-  // Fetch subscription data
+  // Fetch user's subscription details when component mounts
   useEffect(() => {
     const fetchSubscription = async () => {
       if (!user) return;
