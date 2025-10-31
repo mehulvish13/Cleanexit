@@ -1,0 +1,7 @@
+# Copy this file to .dev.vars and fill in the values to enable auth endpoints locally
+# Wrangler will load these during `vite` dev via @cloudflare/vite-plugin
+MOCHA_USERS_SERVICE_API_URL=
+MOCHA_USERS_SERVICE_API_KEY=
+
+# Optional: Cloudflare D1 local database is auto-provisioned in dev
+# DB binding is configured as `DB` in wrangler.jsonc
