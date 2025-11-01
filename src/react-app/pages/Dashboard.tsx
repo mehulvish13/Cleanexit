@@ -34,7 +34,7 @@
  * - Handles logout with cleanup
  */
 
-import { useAuth } from '@getmocha/users-service/react';
+import { useAuth } from '@/react-app/contexts/AuthContext';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router';
 import { Shield, LogOut, FileCheck, HardDrive, Server, Users, BarChart3 } from 'lucide-react';
@@ -132,15 +132,8 @@ export default function DashboardPage() {
             
             <div className="flex items-center space-x-4">
               <div className="flex items-center space-x-3">
-                {user.google_user_data.picture && (
-                  <img
-                    src={user.google_user_data.picture}
-                    alt="Profile"
-                    className="w-8 h-8 rounded-full"
-                  />
-                )}
                 <span className="text-gray-700 font-medium">
-                  {user.google_user_data.name || user.email}
+                    {user.username}
                 </span>
               </div>
               <button
@@ -158,7 +151,7 @@ export default function DashboardPage() {
         {/* Welcome Section */}
         <div className="mb-8">
           <h1 className="text-3xl font-bold text-gray-900 mb-2">
-            Welcome back, {user.google_user_data.given_name || 'User'}!
+          Welcome back, {user.username}!
           </h1>
           <p className="text-gray-600">
             Monitor your data security operations and manage erasure requests from your dashboard.
@@ -302,7 +295,7 @@ export default function DashboardPage() {
         </div>
       </div>
 
-      {/* Sid AI Assistant */}
+      {/* Sera AI Assistant */}
       <Sid />
     </div>
   );

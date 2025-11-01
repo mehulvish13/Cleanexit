@@ -5,7 +5,7 @@ export default function DeviceShowcase() {
   const navigate = useNavigate();
 
   const handleStartWiping = () => {
-    navigate('/wipe');
+    navigate('/login?returnTo=%2Fcertificate');
   };
 
   const devices = [
@@ -22,16 +22,16 @@ export default function DeviceShowcase() {
   ];
 
   return (
-    <section className="py-16 bg-gradient-to-br from-blue-50 to-indigo-100">
+  <section className="py-12 sm:py-16 bg-gradient-to-br from-blue-50 to-indigo-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto">
           <div className="bg-white rounded-3xl shadow-2xl border border-gray-200 overflow-hidden">
-            <div className="bg-gradient-to-r from-blue-600 to-blue-700 p-6 text-white text-center">
-              <h2 className="text-3xl font-bold mb-2">Device Wiping Center</h2>
+            <div className="bg-gradient-to-r from-blue-600 to-blue-700 p-4 sm:p-6 text-white text-center">
+              <h2 className="text-2xl sm:text-3xl font-bold mb-2">Device Wiping Center</h2>
               <p className="text-blue-100">Professional data erasure for all device types</p>
             </div>
             
-            <div className="p-6">
+            <div className="p-4 sm:p-6">
               {/* Device Types */}
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
                 {devices.map((device, index) => (
@@ -46,7 +46,7 @@ export default function DeviceShowcase() {
               </div>
 
               {/* Ready to Wipe Section */}
-              <div className="bg-gradient-to-r from-green-50 to-emerald-50 rounded-xl p-4 mb-6 border border-green-200">
+              <div className="bg-gradient-to-r from-green-50 to-emerald-50 rounded-xl p-3 sm:p-4 mb-6 border border-green-200">
                 <div className="text-center">
                   <div className="flex items-center justify-center space-x-2 mb-2">
                     <Zap className="w-5 h-5 text-green-600" />
@@ -65,19 +65,19 @@ export default function DeviceShowcase() {
               <div className="text-center mb-6">
                 <button
                   onClick={handleStartWiping}
-                  className="bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white px-6 py-3 rounded-xl font-bold text-base transition-all transform hover:scale-105 shadow-lg hover:shadow-xl flex items-center space-x-2 mx-auto"
+                  className="bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white px-5 sm:px-6 py-3 rounded-xl font-bold text-sm sm:text-base transition-all transform hover:scale-105 shadow-lg hover:shadow-xl flex items-center space-x-2 mx-auto"
                 >
                   <Play className="w-5 h-5" />
-                  <span>Start Wiping Now</span>
+                  <span>Sign In to Start</span>
                 </button>
                 <p className="text-gray-500 text-xs mt-2">
-                  Secure data erasure in just a few clicks
+                  Sign in to begin a compliant wipe and generate a certificate
                 </p>
               </div>
 
               {/* Security Features */}
               <div className="border-t border-gray-200 pt-4">
-                <h3 className="text-center text-base font-bold text-gray-800 mb-3">Security Standards</h3>
+                <h3 className="text-center text-sm sm:text-base font-bold text-gray-800 mb-3">Security Standards</h3>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
                   {securityFeatures.map((feature, index) => (
                     <div key={index} className="flex items-center justify-center space-x-2 bg-gray-50 rounded-lg p-3">

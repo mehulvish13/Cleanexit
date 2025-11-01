@@ -7,51 +7,52 @@
  * 
  * ROUTE STRUCTURE:
  * - / → Home page (public marketing site)
- * - /login → Google OAuth login page
- * - /auth/callback → Where Google redirects after login
+ * - /login → Simple username login page
  * - /dashboard → User's private dashboard (requires login)
+ * - /certificate → Certificate generation page (auto-starts wipe and generates cert)
  * 
  * The AuthProvider wraps everything so all components can access:
  * - user: Current logged-in user or null
  * - isPending: Loading state
- * - redirectToLogin(): Function to start login flow
+ * - login(username): Function to log in
  * - logout(): Function to log out
  */
 
 import { BrowserRouter as Router, Routes, Route } from "react-router";
-import { AuthProvider } from '@getmocha/users-service/react';
+import { AuthProvider } from '@/react-app/contexts/AuthContext';
 import ErrorBoundary from "@/react-app/components/ErrorBoundary";
-import HomePage from "@/react-app/pages/Home";
-import DynamicHomePage from "@/react-app/pages/DynamicHome";
-import LoginPage from "@/react-app/pages/Login";
-import AuthCallbackPage from "@/react-app/pages/AuthCallback";
-import DashboardPage from "@/react-app/pages/Dashboard";
-import WipePage from "@/react-app/pages/Wipe";
+import HomePage from "./pages/Home";
+import LoginPage from "./pages/Login";
+import DashboardPage from "./pages/Dashboard";
+import CertificatePage from "./pages/Certificate";
+import AboutPage from "./pages/About";
+import SupportPage from "./pages/Support";
+import PrivacyPage from "./pages/Privacy";
+import TermsPage from "./pages/Terms";
 
 export default function App() {
-  // Toggle between static and dynamic home page
-  const useDynamicHome = false; // Set to true to use dynamic section architecture
-  
   return (
-    // AuthProvider gives all child components access to user state
     <AuthProvider>
       <ErrorBoundary>
         <Router>
           <Routes>
-          {/* Public route - Landing page */}
-          <Route path="/" element={useDynamicHome ? <DynamicHomePage /> : <HomePage />} />
-          
-          {/* Wipe page - anyone can access */}
-          <Route path="/wipe" element={<WipePage />} />
-          
-          {/* Login route - shows Google sign-in button */}
-          <Route path="/login" element={<LoginPage />} />
-          
-          {/* OAuth callback - handles redirect from Google */}
-          <Route path="/auth/callback" element={<AuthCallbackPage />} />
-          
-          {/* Protected route - auto-redirects to /login if not authenticated */}
-          <Route path="/dashboard" element={<DashboardPage />} />
+            {/* Public route - Landing page */}
+            <Route path="/" element={<HomePage />} />
+            
+            {/* Certificate page - wipe and generate certificate */}
+            <Route path="/certificate" element={<CertificatePage />} />
+            
+            {/* Company pages */}
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="/support" element={<SupportPage />} />
+            <Route path="/privacy" element={<PrivacyPage />} />
+            <Route path="/terms" element={<TermsPage />} />
+
+            {/* Login route - username-only */}
+            <Route path="/login" element={<LoginPage />} />
+            
+            {/* Protected route - auto-redirects to /login if not authenticated */}
+            <Route path="/dashboard" element={<DashboardPage />} />
           </Routes>
         </Router>
       </ErrorBoundary>

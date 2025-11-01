@@ -71,7 +71,7 @@ export default function Services() {
                 ))}
               </ul>
               
-              <Button onClick={() => navigate('/wipe')} variant="primary" size="md" block>
+              <Button onClick={() => navigate('/login?returnTo=%2Fcertificate')} variant="primary" size="md" block>
                 <span className="mr-2">Try Now</span>
                 <ArrowRight className="w-4 h-4" />
               </Button>

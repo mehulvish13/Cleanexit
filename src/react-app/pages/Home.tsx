@@ -13,7 +13,7 @@
  * 7. Compliance - Certification badges (GDPR, HIPAA, SOX, etc.)
  * 8. Contact - Contact form and business information
  * 9. Footer - Links, legal pages, and company info
- * 10. Sid - AI chatbot (floating button, available on all pages)
+ * 10. Sera - AI chatbot (floating button, available on all pages)
  * 
  * This page is fully responsive and uses Tailwind CSS for styling.
  */
@@ -28,20 +28,35 @@ import Compliance from '@/react-app/components/Compliance';
 import Contact from '@/react-app/components/Contact';
 import Footer from '@/react-app/components/Footer';
 import Sid from '@/react-app/components/Sid';
+import StickyCallToAction from '@/react-app/components/StickyCallToAction';
+import FadeInSection from '@/react-app/components/animations/FadeInSection';
 
 export default function Home() {
   return (
     <div className="min-h-screen">
       <Header />
       <Hero />
-      <DeviceShowcase />
-      <Services />
-      <Solutions />
-      <Pricing />
-      <Compliance />
-      <Contact />
+      <FadeInSection>
+        <DeviceShowcase />
+      </FadeInSection>
+      <FadeInSection delay={0.1}>
+        <Services />
+      </FadeInSection>
+      <FadeInSection delay={0.1}>
+        <Solutions />
+      </FadeInSection>
+      <FadeInSection delay={0.1}>
+        <Pricing />
+      </FadeInSection>
+      <FadeInSection delay={0.1}>
+        <Compliance />
+      </FadeInSection>
+      <FadeInSection delay={0.1}>
+        <Contact />
+      </FadeInSection>
       <Footer />
-      <Sid />  {/* AI chatbot appears as floating button */}
+      <Sid />  {/* Sera AI chatbot appears as floating button */}
+      <StickyCallToAction />
     </div>
   );
 }

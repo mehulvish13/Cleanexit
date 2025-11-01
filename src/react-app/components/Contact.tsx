@@ -2,109 +2,109 @@ import { Mail, Phone, MapPin, Clock } from 'lucide-react';
 
 export default function Contact() {
   return (
-    <section id="contact" className="py-20 bg-white">
+    <section id="contact" className="py-12 sm:py-16 lg:py-20 bg-white dark:bg-surface-950 transition-colors">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">
+        <div className="text-center mb-12 sm:mb-16">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-3 sm:mb-4">
             Get Started Today
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto px-4">
             Ready to secure your data? Contact our team of experts for a free consultation 
             and learn how we can protect your organization's sensitive information.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          <div className="space-y-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12">
+          <div className="space-y-6 sm:space-y-8">
             <div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-6">Contact Information</h3>
-              <div className="space-y-6">
-                <div className="flex items-center">
-                  <div className="bg-blue-100 p-3 rounded-lg">
-                    <Phone className="w-6 h-6 text-blue-600" />
+              <h3 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-4 sm:mb-6">Contact Information</h3>
+              <div className="space-y-5 sm:space-y-6">
+                <div className="flex items-start sm:items-center">
+                  <div className="bg-brand-100 dark:bg-brand-900/30 p-2.5 sm:p-3 rounded-lg flex-shrink-0">
+                    <Phone className="w-5 h-5 sm:w-6 sm:h-6 text-brand-600 dark:text-brand-400" />
                   </div>
-                  <div className="ml-4">
-                    <p className="font-semibold text-gray-900">Phone</p>
-                    <p className="text-gray-600">1-800-CLEANEXIT</p>
-                  </div>
-                </div>
-                
-                <div className="flex items-center">
-                  <div className="bg-blue-100 p-3 rounded-lg">
-                    <Mail className="w-6 h-6 text-blue-600" />
-                  </div>
-                  <div className="ml-4">
-                    <p className="font-semibold text-gray-900">Email</p>
-                    <p className="text-gray-600">info@cleanexit.com</p>
+                  <div className="ml-3 sm:ml-4">
+                    <p className="font-semibold text-gray-900 dark:text-white text-sm sm:text-base">Phone</p>
+                    <p className="text-gray-600 dark:text-gray-400 text-sm sm:text-base">1-800-CLEANEXIT</p>
                   </div>
                 </div>
                 
-                <div className="flex items-center">
-                  <div className="bg-blue-100 p-3 rounded-lg">
-                    <MapPin className="w-6 h-6 text-blue-600" />
+                <div className="flex items-start sm:items-center">
+                  <div className="bg-brand-100 dark:bg-brand-900/30 p-2.5 sm:p-3 rounded-lg flex-shrink-0">
+                    <Mail className="w-5 h-5 sm:w-6 sm:h-6 text-brand-600 dark:text-brand-400" />
                   </div>
-                  <div className="ml-4">
-                    <p className="font-semibold text-gray-900">Address</p>
-                    <p className="text-gray-600">123 Security Drive<br />Data Center Plaza, Suite 400<br />Tech City, TC 12345</p>
+                  <div className="ml-3 sm:ml-4">
+                    <p className="font-semibold text-gray-900 dark:text-white text-sm sm:text-base">Email</p>
+                    <p className="text-gray-600 dark:text-gray-400 text-sm sm:text-base">info@cleanexit.com</p>
                   </div>
                 </div>
                 
-                <div className="flex items-center">
-                  <div className="bg-blue-100 p-3 rounded-lg">
-                    <Clock className="w-6 h-6 text-blue-600" />
+                <div className="flex items-start sm:items-center">
+                  <div className="bg-brand-100 dark:bg-brand-900/30 p-2.5 sm:p-3 rounded-lg flex-shrink-0">
+                    <MapPin className="w-5 h-5 sm:w-6 sm:h-6 text-brand-600 dark:text-brand-400" />
                   </div>
-                  <div className="ml-4">
-                    <p className="font-semibold text-gray-900">Business Hours</p>
-                    <p className="text-gray-600">Monday - Friday: 8:00 AM - 6:00 PM<br />Emergency: 24/7 Available</p>
+                  <div className="ml-3 sm:ml-4">
+                    <p className="font-semibold text-gray-900 dark:text-white text-sm sm:text-base">Address</p>
+                    <p className="text-gray-600 dark:text-gray-400 text-sm sm:text-base">123 Security Drive<br />Data Center Plaza, Suite 400<br />Tech City, TC 12345</p>
+                  </div>
+                </div>
+                
+                <div className="flex items-start sm:items-center">
+                  <div className="bg-brand-100 dark:bg-brand-900/30 p-2.5 sm:p-3 rounded-lg flex-shrink-0">
+                    <Clock className="w-5 h-5 sm:w-6 sm:h-6 text-brand-600 dark:text-brand-400" />
+                  </div>
+                  <div className="ml-3 sm:ml-4">
+                    <p className="font-semibold text-gray-900 dark:text-white text-sm sm:text-base">Business Hours</p>
+                    <p className="text-gray-600 dark:text-gray-400 text-sm sm:text-base">Monday - Friday: 8:00 AM - 6:00 PM<br />Emergency: 24/7 Available</p>
                   </div>
                 </div>
               </div>
             </div>
           </div>
 
-          <div className="bg-gray-50 rounded-xl p-8">
-            <h3 className="text-2xl font-bold text-gray-900 mb-6">Request a Quote</h3>
-            <form className="space-y-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="bg-gray-50 dark:bg-gray-900/50 dark:border dark:border-gray-800 rounded-xl p-6 sm:p-8 shadow-soft dark:shadow-card transition-colors">
+            <h3 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-4 sm:mb-6">Request a Quote</h3>
+            <form className="space-y-5 sm:space-y-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6">
                 <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">First Name</label>
+                  <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">First Name</label>
                   <input 
                     type="text" 
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                    className="w-full px-3 sm:px-4 py-2.5 sm:py-3 border border-gray-300 dark:border-gray-600 dark:bg-gray-800 dark:text-white rounded-lg focus:ring-2 focus:ring-brand-500 dark:focus:ring-brand-400 focus:border-transparent transition-all text-sm sm:text-base"
                     placeholder="John"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">Last Name</label>
+                  <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Last Name</label>
                   <input 
                     type="text" 
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                    className="w-full px-3 sm:px-4 py-2.5 sm:py-3 border border-gray-300 dark:border-gray-600 dark:bg-gray-800 dark:text-white rounded-lg focus:ring-2 focus:ring-brand-500 dark:focus:ring-brand-400 focus:border-transparent transition-all text-sm sm:text-base"
                     placeholder="Doe"
                   />
                 </div>
               </div>
               
               <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-2">Company</label>
+                <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Company</label>
                 <input 
                   type="text" 
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                  className="w-full px-3 sm:px-4 py-2.5 sm:py-3 border border-gray-300 dark:border-gray-600 dark:bg-gray-800 dark:text-white rounded-lg focus:ring-2 focus:ring-brand-500 dark:focus:ring-brand-400 focus:border-transparent transition-all text-sm sm:text-base"
                   placeholder="Your Company Name"
                 />
               </div>
               
               <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-2">Email</label>
+                <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Email</label>
                 <input 
                   type="email" 
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                  className="w-full px-3 sm:px-4 py-2.5 sm:py-3 border border-gray-300 dark:border-gray-600 dark:bg-gray-800 dark:text-white rounded-lg focus:ring-2 focus:ring-brand-500 dark:focus:ring-brand-400 focus:border-transparent transition-all text-sm sm:text-base"
                   placeholder="john@company.com"
                 />
               </div>
               
               <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-2">Service Needed</label>
-                <select className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all">
+                <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Service Needed</label>
+                <select className="w-full px-3 sm:px-4 py-2.5 sm:py-3 border border-gray-300 dark:border-gray-600 dark:bg-gray-800 dark:text-white rounded-lg focus:ring-2 focus:ring-brand-500 dark:focus:ring-brand-400 focus:border-transparent transition-all text-sm sm:text-base">
                   <option>Select a service</option>
                   <option>Hard Drive Erasure</option>
                   <option>Server Decommissioning</option>
@@ -115,17 +115,17 @@ export default function Contact() {
               </div>
               
               <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-2">Message</label>
+                <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Message</label>
                 <textarea 
                   rows={4}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                  className="w-full px-3 sm:px-4 py-2.5 sm:py-3 border border-gray-300 dark:border-gray-600 dark:bg-gray-800 dark:text-white rounded-lg focus:ring-2 focus:ring-brand-500 dark:focus:ring-brand-400 focus:border-transparent transition-all text-sm sm:text-base"
                   placeholder="Tell us about your data security needs..."
                 ></textarea>
               </div>
               
               <button 
                 type="submit"
-                className="w-full bg-blue-600 text-white px-6 py-4 rounded-lg font-semibold hover:bg-blue-700 transition-colors"
+                className="w-full bg-brand-600 text-white px-5 sm:px-6 py-3 sm:py-4 rounded-lg font-semibold hover:bg-brand-700 dark:hover:bg-brand-500 transition-colors shadow-soft hover:shadow-card text-sm sm:text-base"
               >
                 Send Message
               </button>

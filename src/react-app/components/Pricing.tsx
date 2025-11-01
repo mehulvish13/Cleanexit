@@ -1,5 +1,5 @@
 import { Check, Star, Shield, Zap } from 'lucide-react';
-import { useAuth } from '@getmocha/users-service/react';
+import { useAuth } from '@/react-app/contexts/AuthContext';
 import { useNavigate } from 'react-router';
 
 export default function Pricing() {
@@ -91,19 +91,19 @@ export default function Pricing() {
   };
 
   return (
-    <section id="pricing" className="py-20 bg-gradient-to-br from-gray-50 to-blue-50">
+    <section id="pricing" className="py-16 sm:py-20 bg-gradient-to-br from-gray-50 to-blue-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">
+          <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
             Simple, Transparent Pricing
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto">
             Choose the perfect plan for your data security needs. All plans include 
             our industry-leading erasure technology and compliance documentation.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
           {plans.map((plan, index) => (
             <div 
               key={index} 
@@ -130,7 +130,7 @@ export default function Pricing() {
                 <div className="mb-6">
                   <div className="flex items-baseline">
                     <span className="text-sm font-medium text-gray-500">₹</span>
-                    <span className="text-4xl font-bold text-gray-900">{plan.price}</span>
+                    <span className="text-3xl sm:text-4xl font-bold text-gray-900">{plan.price}</span>
                     <span className="text-gray-500 ml-2 text-sm">/{plan.period}</span>
                   </div>
                 </div>
