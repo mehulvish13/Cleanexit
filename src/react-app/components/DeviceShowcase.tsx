@@ -1,17 +1,11 @@
 import { Smartphone, Laptop, HardDrive, Zap, Play, Shield, CheckCircle } from 'lucide-react';
-import { useAuth } from '@getmocha/users-service/react';
 import { useNavigate } from 'react-router';
 
 export default function DeviceShowcase() {
-  const { user } = useAuth();
   const navigate = useNavigate();
 
   const handleStartWiping = () => {
-    if (!user) {
-      navigate('/login');
-    } else {
-      navigate('/dashboard');
-    }
+    navigate('/wipe');
   };
 
   const devices = [
@@ -37,60 +31,60 @@ export default function DeviceShowcase() {
               <p className="text-blue-100">Professional data erasure for all device types</p>
             </div>
             
-            <div className="p-8">
+            <div className="p-6">
               {/* Device Types */}
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
                 {devices.map((device, index) => (
                   <div key={index} className="text-center group">
-                    <div className="bg-gradient-to-br from-blue-100 to-blue-200 rounded-2xl p-6 mb-3 group-hover:from-blue-200 group-hover:to-blue-300 transition-all transform group-hover:scale-105">
-                      <div className="text-3xl mb-2">{device.emoji}</div>
-                      <device.icon className="w-8 h-8 text-blue-600 mx-auto mb-2" />
-                      <div className="text-sm font-bold text-gray-800">{device.label}</div>
+                    <div className="bg-gradient-to-br from-blue-100 to-blue-200 rounded-xl p-4 mb-2 group-hover:from-blue-200 group-hover:to-blue-300 transition-all transform group-hover:scale-105">
+                      <div className="text-2xl mb-1">{device.emoji}</div>
+                      <device.icon className="w-6 h-6 text-blue-600 mx-auto mb-1" />
+                      <div className="text-xs font-bold text-gray-800">{device.label}</div>
                     </div>
                   </div>
                 ))}
               </div>
 
               {/* Ready to Wipe Section */}
-              <div className="bg-gradient-to-r from-green-50 to-emerald-50 rounded-2xl p-6 mb-8 border border-green-200">
+              <div className="bg-gradient-to-r from-green-50 to-emerald-50 rounded-xl p-4 mb-6 border border-green-200">
                 <div className="text-center">
-                  <div className="flex items-center justify-center space-x-2 mb-3">
-                    <Zap className="w-6 h-6 text-green-600" />
-                    <span className="text-xl font-bold text-green-800">Ready to Wipe</span>
+                  <div className="flex items-center justify-center space-x-2 mb-2">
+                    <Zap className="w-5 h-5 text-green-600" />
+                    <span className="text-lg font-bold text-green-800">Ready to Wipe</span>
                   </div>
-                  <p className="text-green-700 font-semibold">
+                  <p className="text-green-700 font-semibold text-sm">
                     NVMe & SATA SSDs
                   </p>
-                  <p className="text-green-600 text-sm mt-1">
+                  <p className="text-green-600 text-xs mt-1">
                     Latest generation storage devices supported
                   </p>
                 </div>
               </div>
 
               {/* Start Wiping Button */}
-              <div className="text-center mb-8">
+              <div className="text-center mb-6">
                 <button
                   onClick={handleStartWiping}
-                  className="bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white px-8 py-4 rounded-2xl font-bold text-lg transition-all transform hover:scale-105 shadow-lg hover:shadow-xl flex items-center space-x-3 mx-auto"
+                  className="bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white px-6 py-3 rounded-xl font-bold text-base transition-all transform hover:scale-105 shadow-lg hover:shadow-xl flex items-center space-x-2 mx-auto"
                 >
-                  <Play className="w-6 h-6" />
+                  <Play className="w-5 h-5" />
                   <span>Start Wiping Now</span>
                 </button>
-                <p className="text-gray-500 text-sm mt-2">
-                  {user ? 'Access your dashboard to begin' : 'Sign in to get started'}
+                <p className="text-gray-500 text-xs mt-2">
+                  Secure data erasure in just a few clicks
                 </p>
               </div>
 
               {/* Security Features */}
-              <div className="border-t border-gray-200 pt-6">
-                <h3 className="text-center text-lg font-bold text-gray-800 mb-4">Security Standards</h3>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div className="border-t border-gray-200 pt-4">
+                <h3 className="text-center text-base font-bold text-gray-800 mb-3">Security Standards</h3>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
                   {securityFeatures.map((feature, index) => (
-                    <div key={index} className="flex items-center justify-center space-x-3 bg-gray-50 rounded-xl p-4">
-                      <span className="text-2xl">{feature.emoji}</span>
+                    <div key={index} className="flex items-center justify-center space-x-2 bg-gray-50 rounded-lg p-3">
+                      <span className="text-xl">{feature.emoji}</span>
                       <div className="text-center">
-                        <feature.icon className="w-5 h-5 text-gray-600 mx-auto mb-1" />
-                        <span className="text-sm font-semibold text-gray-800">{feature.label}</span>
+                        <feature.icon className="w-4 h-4 text-gray-600 mx-auto mb-1" />
+                        <span className="text-xs font-semibold text-gray-800">{feature.label}</span>
                       </div>
                     </div>
                   ))}
@@ -98,10 +92,10 @@ export default function DeviceShowcase() {
               </div>
 
               {/* Additional Info */}
-              <div className="mt-6 text-center">
-                <div className="inline-flex items-center space-x-2 bg-blue-50 px-4 py-2 rounded-full">
-                  <Shield className="w-4 h-4 text-blue-600" />
-                  <span className="text-blue-800 text-sm font-medium">
+              <div className="mt-4 text-center">
+                <div className="inline-flex items-center space-x-2 bg-blue-50 px-3 py-1.5 rounded-full">
+                  <Shield className="w-3 h-3 text-blue-600" />
+                  <span className="text-blue-800 text-xs font-medium">
                     Military-grade data destruction with audit trail
                   </span>
                 </div>

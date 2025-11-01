@@ -32,8 +32,57 @@ export default {
     "./index.html",           // Main HTML file
     "./src/react-app/**/*.{js,ts,jsx,tsx}",  // All React components
   ],
+  darkMode: 'class',
   theme: {
-    extend: {},  // Add custom theme extensions here
+    container: {
+      center: true,
+      padding: {
+        DEFAULT: '1rem',
+        sm: '1.5rem',
+        lg: '2rem',
+        xl: '2rem',
+        '2xl': '2.5rem',
+      },
+    },
+    extend: {
+      fontFamily: {
+        sans: ["Inter", "system-ui", "Avenir", "Helvetica", "Arial", "sans-serif"],
+      },
+      colors: {
+        brand: {
+          50: '#eef6ff',
+          100: '#d9ebff',
+          200: '#b8d9ff',
+          300: '#8cc2ff',
+          400: '#5ea6ff',
+          500: '#2f84ff',
+          600: '#1d6af5',
+          700: '#1856d4',
+          800: '#1747a8',
+          900: '#163e89',
+          950: '#0f2857',
+        },
+        surface: {
+          50: '#ffffff',
+          100: '#f9fafb',
+          200: '#f3f4f6',
+          800: '#0b1320',
+          900: '#0a0f1a',
+          950: '#070b12',
+        },
+      },
+      boxShadow: {
+        soft: '0 4px 24px -4px rgba(2, 6, 23, 0.1)',
+        card: '0 8px 32px -8px rgba(2, 6, 23, 0.15)',
+      },
+      borderRadius: {
+        xl: '1rem',
+        '2xl': '1.25rem',
+      },
+      transitionTimingFunction: {
+        smooth: 'cubic-bezier(0.22, 1, 0.36, 1)',
+      },
+    },
   },
   plugins: [],  // Add Tailwind plugins here (forms, typography, etc.)
 };

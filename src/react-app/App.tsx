@@ -20,19 +20,29 @@
 
 import { BrowserRouter as Router, Routes, Route } from "react-router";
 import { AuthProvider } from '@getmocha/users-service/react';
+import ErrorBoundary from "@/react-app/components/ErrorBoundary";
 import HomePage from "@/react-app/pages/Home";
+import DynamicHomePage from "@/react-app/pages/DynamicHome";
 import LoginPage from "@/react-app/pages/Login";
 import AuthCallbackPage from "@/react-app/pages/AuthCallback";
 import DashboardPage from "@/react-app/pages/Dashboard";
+import WipePage from "@/react-app/pages/Wipe";
 
 export default function App() {
+  // Toggle between static and dynamic home page
+  const useDynamicHome = false; // Set to true to use dynamic section architecture
+  
   return (
     // AuthProvider gives all child components access to user state
     <AuthProvider>
-      <Router>
-        <Routes>
-          {/* Public route - anyone can access */}
-          <Route path="/" element={<HomePage />} />
+      <ErrorBoundary>
+        <Router>
+          <Routes>
+          {/* Public route - Landing page */}
+          <Route path="/" element={useDynamicHome ? <DynamicHomePage /> : <HomePage />} />
+          
+          {/* Wipe page - anyone can access */}
+          <Route path="/wipe" element={<WipePage />} />
           
           {/* Login route - shows Google sign-in button */}
           <Route path="/login" element={<LoginPage />} />
@@ -42,8 +52,9 @@ export default function App() {
           
           {/* Protected route - auto-redirects to /login if not authenticated */}
           <Route path="/dashboard" element={<DashboardPage />} />
-        </Routes>
-      </Router>
+          </Routes>
+        </Router>
+      </ErrorBoundary>
     </AuthProvider>
   );
 }

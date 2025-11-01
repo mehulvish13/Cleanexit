@@ -15,3 +15,9 @@ html {
 body {
   line-height: 1.6;
 }
+
+@layer base {
+  body {
+    @apply bg-white text-gray-900 dark:bg-surface-950 dark:text-gray-100 antialiased;
+  }
+}

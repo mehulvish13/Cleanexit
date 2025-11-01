@@ -1,6 +1,9 @@
-import { HardDrive, Server, Smartphone, Database, Award, Clock } from 'lucide-react';
+import { HardDrive, Server, Smartphone, Database, Award, Clock, ArrowRight } from 'lucide-react';
+import { useNavigate } from 'react-router';
+import Button from './ui/Button';
 
 export default function Services() {
+  const navigate = useNavigate();
   const services = [
     {
       icon: HardDrive,
@@ -35,51 +38,56 @@ export default function Services() {
   ];
 
   return (
-    <section id="services" className="py-20 bg-gray-50">
+    <section id="services" className="py-20 bg-gray-50 dark:bg-gray-950">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">
+          <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
             Comprehensive Data Erasure Services
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
             From individual devices to enterprise data centers, we provide certified 
             data destruction services that meet the highest security standards.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
           {services.map((service, index) => (
-            <div key={index} className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow border border-gray-200">
-              <div className="flex items-center mb-6">
-                <div className="bg-blue-100 p-3 rounded-lg">
-                  <service.icon className="w-8 h-8 text-blue-600" />
+            <div key={index} className="bg-white dark:bg-gray-900 rounded-lg p-6 shadow-soft hover:shadow-card transition-shadow border border-gray-200 dark:border-gray-800">
+              <div className="flex items-center mb-4">
+                <div className="bg-brand-50 dark:bg-gray-800 p-2 rounded-lg">
+                  <service.icon className="w-6 h-6 text-brand-600" />
                 </div>
-                <h3 className="text-2xl font-bold text-gray-900 ml-4">{service.title}</h3>
+                <h3 className="text-xl font-bold text-gray-900 dark:text-white ml-3">{service.title}</h3>
               </div>
               
-              <p className="text-gray-600 mb-6 leading-relaxed">{service.description}</p>
+              <p className="text-gray-600 dark:text-gray-300 mb-4 leading-relaxed text-sm">{service.description}</p>
               
-              <ul className="space-y-3">
+              <ul className="space-y-2 mb-4">
                 {service.features.map((feature, featureIndex) => (
-                  <li key={featureIndex} className="flex items-center text-gray-700">
-                    <div className="w-2 h-2 bg-blue-600 rounded-full mr-3"></div>
+                  <li key={featureIndex} className="flex items-center text-gray-700 dark:text-gray-300 text-sm">
+                    <div className="w-1.5 h-1.5 bg-brand-600 rounded-full mr-2"></div>
                     {feature}
                   </li>
                 ))}
               </ul>
+              
+              <Button onClick={() => navigate('/wipe')} variant="primary" size="md" block>
+                <span className="mr-2">Try Now</span>
+                <ArrowRight className="w-4 h-4" />
+              </Button>
             </div>
           ))}
         </div>
 
-        <div className="bg-white rounded-xl p-8 shadow-lg border border-gray-200">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+        <div className="bg-white dark:bg-gray-900 rounded-lg p-6 shadow-soft border border-gray-200 dark:border-gray-800">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
             {stats.map((stat, index) => (
               <div key={index} className="flex flex-col items-center">
-                <div className="bg-blue-100 p-4 rounded-full mb-4">
-                  <stat.icon className="w-8 h-8 text-blue-600" />
+                <div className="bg-brand-50 dark:bg-gray-800 p-3 rounded-full mb-3">
+                  <stat.icon className="w-6 h-6 text-brand-600" />
                 </div>
-                <div className="text-3xl font-bold text-gray-900 mb-2">{stat.value}</div>
-                <div className="text-gray-600 font-medium">{stat.label}</div>
+                <div className="text-2xl font-bold text-gray-900 dark:text-white mb-1">{stat.value}</div>
+                <div className="text-gray-600 dark:text-gray-300 font-medium text-sm">{stat.label}</div>
               </div>
             ))}
           </div>
