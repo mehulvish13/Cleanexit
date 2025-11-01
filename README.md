@@ -48,40 +48,95 @@ Dark mode: Custom surface-950 for backgrounds
 - **lg**: 1024px (desktops)
 - **xl**: 1280px+ (large screens)
 
-## Run the app locally
+## 🚀 Quick Start
 
-1) Install dependencies
+### Development
+
+1. **Install dependencies**
 ```bash
 npm install
 ```
 
-2) (Optional but recommended) Configure local env vars for the Worker
-
-Create a `.dev.vars` file at the project root (you can copy `.dev.vars.example`) and set:
-
-```
-MOCHA_USERS_SERVICE_API_URL=...
-MOCHA_USERS_SERVICE_API_KEY=...
-```
-
-Without these, the UI will run, but auth-related API calls (login, user info) will return Unauthorized in dev.
-
-3) Start the dev server
+2. **Start the dev server**
 ```bash
 npm run dev
 ```
+Open [http://localhost:5176](http://localhost:5176) in your browser.
 
-This starts Vite on http://localhost:5176 and runs the Cloudflare Worker endpoints alongside it via the Cloudflare Vite plugin.
-
-4) Build for production
+3. **Build for production**
 ```bash
 npm run build
 ```
 
-5) Preview production build
+4. **Preview production build**
 ```bash
 npm run preview
 ```
+
+## 🌐 Deploy to Vercel
+
+### Option 1: Deploy with Vercel CLI (Recommended)
+
+1. **Install Vercel CLI**
+```bash
+npm install -g vercel
+```
+
+2. **Deploy**
+```bash
+vercel
+```
+
+Follow the prompts to deploy your project. Vercel will automatically detect the Vite framework.
+
+### Option 2: Deploy via GitHub
+
+1. **Push your code to GitHub**
+```bash
+git add .
+git commit -m "Ready for deployment"
+git push origin main
+```
+
+2. **Import to Vercel**
+   - Go to [vercel.com](https://vercel.com)
+   - Click "New Project"
+   - Import your GitHub repository
+   - Vercel will auto-detect settings from `vercel.json`
+   - Click "Deploy"
+
+### Option 3: Deploy with Vercel Button
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/mehulvish13/Cleanexit)
+
+### Vercel Configuration
+
+The project includes a `vercel.json` file with:
+- ✅ SPA routing (all routes → index.html)
+- ✅ Asset caching (1 year for static files)
+- ✅ Security headers (XSS, Frame, Content-Type protection)
+
+### Environment Variables (Optional)
+
+If you need environment variables:
+
+1. In Vercel dashboard → Project Settings → Environment Variables
+2. Add variables with `VITE_` prefix:
+   ```
+   VITE_API_URL=https://api.yourdomain.com
+   VITE_APP_NAME=Cleanexit
+   ```
+
+### Custom Domain
+
+After deployment:
+1. Go to Project Settings → Domains
+2. Add your custom domain
+3. Update DNS settings as instructed
+
+---
+
+## 🛠️ Development Guide
 
 ## 🎯 Recent Enhancements
 

@@ -4,21 +4,21 @@
  * This file configures Vite, our blazing-fast build tool.
  * 
  * PLUGINS:
- * 1. mochaPlugins - Mocha platform integration
- * 2. react() - Enables React Fast Refresh (instant updates during dev)
- * 3. cloudflare() - Runs Cloudflare Worker alongside Vite dev server
+ * - react() - Enables React Fast Refresh (instant updates during dev)
  * 
  * FEATURES:
  * - Hot Module Reload: Changes appear instantly without full page refresh
  * - Path Aliases: Use @/ instead of ../../../ for imports
- * - Worker Integration: Backend API runs locally during development
  * - Optimized Builds: Production builds are minified and optimized
+ * - Code Splitting: Automatic chunk splitting for better performance
  * 
  * SERVER CONFIG:
- * - allowedHosts: Accept connections from any host (useful for deployment)
+ * - Port: 5176 for local development
+ * - allowedHosts: Accept connections from any host
  * 
  * BUILD CONFIG:
- * - chunkSizeWarningLimit: 5MB (increased because we have many features)
+ * - chunkSizeWarningLimit: 5MB (for feature-rich bundles)
+ * - Rollup optimizations for production
  */
 
 import path from "path";
@@ -30,16 +30,27 @@ export default defineConfig({
   
   server: {
     port: 5176,
-    allowedHosts: true,  // Allow connections from any hostname
+    host: true,  // Listen on all addresses for network access
   },
   
   build: {
-    chunkSizeWarningLimit: 5000,  // Warn if chunks exceed 5MB
+    outDir: 'dist',
+    sourcemap: false,  // Disable source maps in production for smaller bundle
+    chunkSizeWarningLimit: 5000,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          'vendor-react': ['react', 'react-dom', 'react-router'],
+          'vendor-ui': ['framer-motion', 'lucide-react'],
+          'vendor-pdf': ['jspdf'],
+        },
+      },
+    },
   },
   
   resolve: {
     alias: {
-      "@": path.resolve(__dirname, "./src"),  // Use @/path instead of ../../../path
+      "@": path.resolve(__dirname, "./src"),
     },
   },
 });
