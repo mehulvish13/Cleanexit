@@ -27,6 +27,7 @@ import Pricing from '@/react-app/components/Pricing';
 import Compliance from '@/react-app/components/Compliance';
 import Contact from '@/react-app/components/Contact';
 import Footer from '@/react-app/components/Footer';
+import Testimonials from '@/react-app/components/Testimonials';
 import Sid from '@/react-app/components/Sid';
 import StickyCallToAction from '@/react-app/components/StickyCallToAction';
 import FadeInSection from '@/react-app/components/animations/FadeInSection';
@@ -41,6 +42,9 @@ export default function Home() {
       </FadeInSection>
       <FadeInSection delay={0.1}>
         <Services />
+      </FadeInSection>
+      <FadeInSection delay={0.1}>
+        <Testimonials />
       </FadeInSection>
       <FadeInSection delay={0.1}>
         <Solutions />

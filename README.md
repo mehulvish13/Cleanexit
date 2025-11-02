@@ -27,8 +27,8 @@ A modern, responsive React application for enterprise data security and secure d
 - **Build Tool**: Vite 6.4.1
 - **Icons**: lucide-react
 - **PDF**: jsPDF
-- **Routing**: react-router-dom
-- **Worker**: Cloudflare Workers (optional)
+- **Routing**: react-router 7
+- **Backend (optional)**: Vercel Serverless Functions + Supabase (PostgreSQL)
 
 ## 🎨 Theme Configuration
 
@@ -73,6 +73,28 @@ npm run build
 npm run preview
 ```
 
+## 🔌 Optional API Backend (Vercel + Supabase)
+
+This project includes ready-to-use serverless API routes under `api/` that run on Vercel. If you want to persist certificates or tickets, connect a Supabase database.
+
+- API endpoints:
+   - `POST /api/certificate` – generate a wipe certificate
+   - `POST /api/auth/login` – simple username login (create or fetch user)
+   - `POST /api/support/ticket` – create a support ticket
+
+Docs:
+- Backend details: `BACKEND_README.md`
+- Quick start: `QUICK_START.md`
+- Database schema: `database/schema.sql`
+
+Environment variables (copy `.env.example`):
+```
+VITE_SUPABASE_URL=...            # frontend
+VITE_SUPABASE_ANON_KEY=...       # frontend
+SUPABASE_URL=...                 # backend (serverless functions)
+SUPABASE_SERVICE_KEY=...         # backend (secret)
+```
+
 ## 🌐 Deploy to Vercel
 
 ### Option 1: Deploy with Vercel CLI (Recommended)
@@ -113,19 +135,21 @@ git push origin main
 
 The project includes a `vercel.json` file with:
 - ✅ SPA routing (all routes → index.html)
+- ✅ API passthrough for `/api/*` serverless routes
 - ✅ Asset caching (1 year for static files)
 - ✅ Security headers (XSS, Frame, Content-Type protection)
 
 ### Environment Variables (Optional)
 
-If you need environment variables:
+Add these in Vercel → Project Settings → Environment Variables (Production, Preview, Development):
 
-1. In Vercel dashboard → Project Settings → Environment Variables
-2. Add variables with `VITE_` prefix:
-   ```
-   VITE_API_URL=https://api.yourdomain.com
-   VITE_APP_NAME=Cleanexit
-   ```
+```
+VITE_SUPABASE_URL=...
+VITE_SUPABASE_ANON_KEY=...
+SUPABASE_URL=...
+SUPABASE_SERVICE_KEY=...
+```
+Then redeploy. See `.env.example`.
 
 ### Custom Domain
 

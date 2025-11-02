@@ -3,7 +3,6 @@ import { useState } from 'react';
 import { useAuth } from '@/react-app/contexts/AuthContext';
 import { useLocation, useNavigate } from 'react-router';
 import { motion, AnimatePresence } from 'framer-motion';
-import ThemeToggle from './ThemeToggle';
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -22,61 +21,67 @@ export default function Header() {
   const isHomePage = location.pathname === '/';
 
   return (
-    <header className="bg-white/95 dark:bg-gray-900/90 backdrop-blur-sm border-b border-gray-200 dark:border-gray-800 sticky top-0 z-50 shadow-sm">
-      <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" aria-label="Main navigation">
-        <div className="flex justify-between items-center h-16">
-          {/* Left: Logo & Brand */}
-          <div className="flex items-center">
-            <button 
-              onClick={() => handleNavigation('/')}
-              className="flex items-center space-x-2 hover:opacity-80 transition-opacity"
-              aria-label="Go to homepage"
-            >
-              <Shield className="w-8 h-8 text-brand-600 dark:text-brand-400" />
-              <span className="text-xl font-bold text-gray-900 dark:text-white">Cleanexit</span>
-            </button>
-          </div>
-          
-          {/* Center: Main Navigation Links (Desktop) */}
-          <ul className="hidden lg:flex items-center space-x-1">
+    <header className="sticky top-0 z-50 border-b border-slate-200 bg-white/85 backdrop-blur-xl">
+      <nav className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6 lg:px-8" aria-label="Main navigation">
+        {/* Left: Logo & Brand */}
+        <button
+          onClick={() => handleNavigation('/')}
+          className="group flex items-center gap-3 transition-opacity hover:opacity-90"
+          aria-label="Go to homepage"
+        >
+          <span className="grid h-10 w-10 place-items-center rounded-full bg-brand-50 text-brand-600 shadow-inner">
+            <Shield className="h-6 w-6" />
+          </span>
+          <span className="flex flex-col items-start leading-tight">
+            <span className="font-heading text-lg font-semibold tracking-tight text-slate-900">
+              Cleanexit
+            </span>
+            <span className="hidden text-xs font-medium uppercase tracking-[0.2em] text-slate-400 sm:block">
+              Secure Data Erasure
+            </span>
+          </span>
+        </button>
+
+        {/* Center: Main Navigation Links (Desktop) */}
+        <ul className="hidden items-center gap-1 lg:flex">
             {isHomePage ? (
               <>
                 <li>
-                  <a 
-                    href="#services" 
-                    className="px-3 py-2 rounded-md text-gray-700 dark:text-gray-300 hover:text-brand-600 dark:hover:text-brand-400 hover:bg-gray-100 dark:hover:bg-gray-800 transition-all font-medium"
+                  <a
+                    href="#services"
+                    className="rounded-full px-3 py-2 text-sm font-medium text-slate-600 transition-colors hover:bg-slate-100 hover:text-brand-600"
                   >
                     Services
                   </a>
                 </li>
                 <li>
-                  <a 
-                    href="#solutions" 
-                    className="px-3 py-2 rounded-md text-gray-700 dark:text-gray-300 hover:text-brand-600 dark:hover:text-brand-400 hover:bg-gray-100 dark:hover:bg-gray-800 transition-all font-medium"
+                  <a
+                    href="#solutions"
+                    className="rounded-full px-3 py-2 text-sm font-medium text-slate-600 transition-colors hover:bg-slate-100 hover:text-brand-600"
                   >
                     Solutions
                   </a>
                 </li>
                 <li>
-                  <a 
-                    href="#pricing" 
-                    className="px-3 py-2 rounded-md text-gray-700 dark:text-gray-300 hover:text-brand-600 dark:hover:text-brand-400 hover:bg-gray-100 dark:hover:bg-gray-800 transition-all font-medium"
+                  <a
+                    href="#pricing"
+                    className="rounded-full px-3 py-2 text-sm font-medium text-slate-600 transition-colors hover:bg-slate-100 hover:text-brand-600"
                   >
                     Pricing
                   </a>
                 </li>
                 <li>
-                  <a 
-                    href="#compliance" 
-                    className="px-3 py-2 rounded-md text-gray-700 dark:text-gray-300 hover:text-brand-600 dark:hover:text-brand-400 hover:bg-gray-100 dark:hover:bg-gray-800 transition-all font-medium"
+                  <a
+                    href="#compliance"
+                    className="rounded-full px-3 py-2 text-sm font-medium text-slate-600 transition-colors hover:bg-slate-100 hover:text-brand-600"
                   >
                     Compliance
                   </a>
                 </li>
                 <li>
-                  <a 
-                    href="#contact" 
-                    className="px-3 py-2 rounded-md text-gray-700 dark:text-gray-300 hover:text-brand-600 dark:hover:text-brand-400 hover:bg-gray-100 dark:hover:bg-gray-800 transition-all font-medium"
+                  <a
+                    href="#contact"
+                    className="rounded-full px-3 py-2 text-sm font-medium text-slate-600 transition-colors hover:bg-slate-100 hover:text-brand-600"
                   >
                     Contact
                   </a>
@@ -84,9 +89,9 @@ export default function Header() {
               </>
             ) : (
               <li>
-                <button 
-                  onClick={() => handleNavigation('/')} 
-                  className="px-3 py-2 rounded-md text-gray-700 dark:text-gray-300 hover:text-brand-600 dark:hover:text-brand-400 hover:bg-gray-100 dark:hover:bg-gray-800 transition-all font-medium"
+                <button
+                  onClick={() => handleNavigation('/')}
+                  className="rounded-full px-3 py-2 text-sm font-medium text-slate-600 transition-colors hover:bg-slate-100 hover:text-brand-600"
                 >
                   Home
                 </button>
@@ -94,37 +99,36 @@ export default function Header() {
             )}
             
             {/* Divider */}
-            <li className="h-6 w-px bg-gray-300 dark:bg-gray-700 mx-2"></li>
+            <li className="mx-3 h-6 w-px bg-slate-200" />
             
             {/* Secondary Links */}
             <li>
-              <button 
-                onClick={() => handleNavigation('/about')} 
-                className="px-3 py-2 rounded-md text-gray-700 dark:text-gray-300 hover:text-brand-600 dark:hover:text-brand-400 hover:bg-gray-100 dark:hover:bg-gray-800 transition-all font-medium"
+              <button
+                onClick={() => handleNavigation('/about')}
+                className="rounded-full px-3 py-2 text-sm font-medium text-slate-600 transition-colors hover:bg-slate-100 hover:text-brand-600"
               >
                 About
               </button>
             </li>
             <li>
-              <button 
-                onClick={() => handleNavigation('/support')} 
-                className="px-3 py-2 rounded-md text-gray-700 dark:text-gray-300 hover:text-brand-600 dark:hover:text-brand-400 hover:bg-gray-100 dark:hover:bg-gray-800 transition-all font-medium"
+              <button
+                onClick={() => handleNavigation('/support')}
+                className="rounded-full px-3 py-2 text-sm font-medium text-slate-600 transition-colors hover:bg-slate-100 hover:text-brand-600"
               >
                 Support
               </button>
             </li>
           </ul>
 
-          {/* Right: User Actions & Theme Toggle */}
-          <div className="hidden lg:flex items-center space-x-3">
-            <ThemeToggle />
+          {/* Right: User Actions */}
+          <div className="hidden items-center gap-3 lg:flex">
             
             {user ? (
               <>
                 {/* Dashboard Button */}
                 <button
                   onClick={() => navigate('/dashboard')}
-                  className="px-4 py-2 rounded-md text-gray-700 dark:text-gray-300 hover:text-brand-600 dark:hover:text-brand-400 hover:bg-gray-100 dark:hover:bg-gray-800 transition-all font-medium"
+                  className="rounded-full px-4 py-2 text-sm font-medium text-slate-600 transition-colors hover:bg-slate-100 hover:text-brand-600"
                 >
                   Dashboard
                 </button>
@@ -133,18 +137,18 @@ export default function Header() {
                 <div className="relative">
                   <button
                     onClick={() => setIsUserMenuOpen(!isUserMenuOpen)}
-                    className="flex items-center space-x-2 px-3 py-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 transition-all"
+                    className="flex items-center gap-2 rounded-full px-3 py-2 transition-colors hover:bg-slate-100"
                     aria-expanded={isUserMenuOpen}
                     aria-haspopup="true"
                   >
-                    <div className="w-8 h-8 rounded-full bg-brand-600 dark:bg-brand-500 flex items-center justify-center text-white font-semibold text-sm">
+                    <div className="flex h-9 w-9 items-center justify-center rounded-full bg-brand-600 text-sm font-semibold text-white">
                       {user.username?.charAt(0).toUpperCase() || 'U'}
                     </div>
-                    <span className="text-sm text-gray-700 dark:text-gray-300 font-medium max-w-[100px] truncate">
+                    <span className="max-w-[120px] truncate text-sm font-medium text-slate-700">
                       {user.username}
                     </span>
                     <svg 
-                      className={`w-4 h-4 text-gray-500 transition-transform ${isUserMenuOpen ? 'rotate-180' : ''}`} 
+                      className={`h-4 w-4 text-slate-400 transition-transform ${isUserMenuOpen ? 'rotate-180' : ''}`}
                       fill="none" 
                       stroke="currentColor" 
                       viewBox="0 0 24 24"
@@ -161,14 +165,14 @@ export default function Header() {
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -10 }}
                         transition={{ duration: 0.2 }}
-                        className="absolute right-0 mt-2 w-48 bg-white dark:bg-gray-800 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 py-2"
+                        className="absolute right-0 mt-2 w-52 rounded-2xl border border-slate-200 bg-white py-2 shadow-soft"
                         onMouseLeave={() => setIsUserMenuOpen(false)}
                       >
-                        <div className="px-4 py-2 border-b border-gray-200 dark:border-gray-700">
-                          <p className="text-sm font-medium text-gray-900 dark:text-white truncate">
+                        <div className="border-b border-slate-100 px-4 py-3">
+                          <p className="truncate text-sm font-semibold text-slate-900">
                             {user.username}
                           </p>
-                          <p className="text-xs text-gray-500 dark:text-gray-400">
+                          <p className="text-xs text-slate-400">
                             Account
                           </p>
                         </div>
@@ -178,7 +182,7 @@ export default function Header() {
                             setIsUserMenuOpen(false);
                             navigate('/dashboard');
                           }}
-                          className="w-full text-left px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+                          className="w-full px-4 py-2 text-left text-sm font-medium text-slate-600 transition-colors hover:bg-slate-50"
                         >
                           Profile
                         </button>
@@ -189,19 +193,19 @@ export default function Header() {
                             // Add settings page navigation when available
                             navigate('/dashboard');
                           }}
-                          className="w-full text-left px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+                          className="w-full px-4 py-2 text-left text-sm font-medium text-slate-600 transition-colors hover:bg-slate-50"
                         >
                           Settings
                         </button>
                         
-                        <div className="border-t border-gray-200 dark:border-gray-700 mt-2 pt-2">
+                        <div className="mt-2 border-t border-slate-100 pt-2">
                           <button
                             onClick={() => {
                               setIsUserMenuOpen(false);
                               // Add logout functionality
                               navigate('/login');
                             }}
-                            className="w-full text-left px-4 py-2 text-sm text-red-600 dark:text-red-400 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+                            className="w-full px-4 py-2 text-left text-sm font-semibold text-orange-600 transition-colors hover:bg-orange-50"
                           >
                             Sign Out
                           </button>
@@ -217,7 +221,7 @@ export default function Header() {
                   const current = location.pathname + location.search + location.hash;
                   navigate(`/login?returnTo=${encodeURIComponent(current)}`);
                 }}
-                className="bg-brand-600 hover:bg-brand-700 dark:bg-brand-500 dark:hover:bg-brand-600 text-white px-6 py-2 rounded-lg transition-all font-semibold shadow-md hover:shadow-lg transform hover:scale-105"
+                className="rounded-full bg-brand-600 px-6 py-2 text-sm font-semibold text-white shadow-soft transition-colors hover:bg-brand-700"
               >
                 Sign In
               </button>
@@ -225,10 +229,9 @@ export default function Header() {
           </div>
 
           {/* Mobile menu button */}
-          <div className="lg:hidden flex items-center space-x-2">
-            <ThemeToggle />
+          <div className="flex items-center gap-2 lg:hidden">
             <button 
-              className="p-2 text-gray-700 dark:text-gray-300 hover:text-brand-600 dark:hover:text-brand-400 transition-colors rounded-md hover:bg-gray-100 dark:hover:bg-gray-800"
+              className="rounded-full p-2 text-slate-600 transition-colors hover:bg-slate-100 hover:text-brand-600"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               aria-label="Toggle menu"
               aria-expanded={isMenuOpen}
@@ -240,7 +243,6 @@ export default function Header() {
               )}
             </button>
           </div>
-        </div>
 
         {/* Mobile menu */}
         <AnimatePresence>
@@ -250,15 +252,15 @@ export default function Header() {
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.3, ease: 'easeInOut' }}
-              className="md:hidden overflow-hidden"
+              className="overflow-hidden rounded-2xl border border-slate-200 bg-white md:hidden"
             >
-              <nav className="flex flex-col space-y-3 py-4 border-t border-gray-200 dark:border-gray-800">
+              <nav className="flex flex-col gap-2 px-4 py-4">
                 <motion.button
                   initial={{ x: -20, opacity: 0 }}
                   animate={{ x: 0, opacity: 1 }}
                   transition={{ delay: 0.1 }}
                   onClick={() => { setIsMenuOpen(false); navigate('/about'); }}
-                  className="text-left text-gray-700 dark:text-gray-300 hover:text-brand-600 dark:hover:text-brand-400 transition-colors font-medium py-2 px-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800"
+                  className="rounded-xl px-3 py-2 text-left text-sm font-medium text-slate-600 transition-colors hover:bg-slate-100 hover:text-brand-600"
                 >
                   About
                 </motion.button>
@@ -268,7 +270,7 @@ export default function Header() {
                   animate={{ x: 0, opacity: 1 }}
                   transition={{ delay: 0.15 }}
                   onClick={() => { setIsMenuOpen(false); navigate('/support'); }}
-                  className="text-left text-gray-700 dark:text-gray-300 hover:text-brand-600 dark:hover:text-brand-400 transition-colors font-medium py-2 px-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800"
+                  className="rounded-xl px-3 py-2 text-left text-sm font-medium text-slate-600 transition-colors hover:bg-slate-100 hover:text-brand-600"
                 >
                   Support
                 </motion.button>
@@ -279,7 +281,7 @@ export default function Header() {
                   transition={{ delay: 0.2 }}
                   href="#services"
                   onClick={() => setIsMenuOpen(false)}
-                  className="text-gray-700 dark:text-gray-300 hover:text-brand-600 dark:hover:text-brand-400 transition-colors font-medium py-2 px-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800"
+                  className="rounded-xl px-3 py-2 text-sm font-medium text-slate-600 transition-colors hover:bg-slate-100 hover:text-brand-600"
                 >
                   Services
                 </motion.a>
@@ -290,7 +292,7 @@ export default function Header() {
                   transition={{ delay: 0.25 }}
                   href="#solutions"
                   onClick={() => setIsMenuOpen(false)}
-                  className="text-gray-700 dark:text-gray-300 hover:text-brand-600 dark:hover:text-brand-400 transition-colors font-medium py-2 px-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800"
+                  className="rounded-xl px-3 py-2 text-sm font-medium text-slate-600 transition-colors hover:bg-slate-100 hover:text-brand-600"
                 >
                   Solutions
                 </motion.a>
@@ -301,7 +303,7 @@ export default function Header() {
                   transition={{ delay: 0.3 }}
                   href="#pricing"
                   onClick={() => setIsMenuOpen(false)}
-                  className="text-gray-700 dark:text-gray-300 hover:text-brand-600 dark:hover:text-brand-400 transition-colors font-medium py-2 px-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800"
+                  className="rounded-xl px-3 py-2 text-sm font-medium text-slate-600 transition-colors hover:bg-slate-100 hover:text-brand-600"
                 >
                   Pricing
                 </motion.a>
@@ -312,7 +314,7 @@ export default function Header() {
                   transition={{ delay: 0.35 }}
                   href="#compliance"
                   onClick={() => setIsMenuOpen(false)}
-                  className="text-gray-700 dark:text-gray-300 hover:text-brand-600 dark:hover:text-brand-400 transition-colors font-medium py-2 px-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800"
+                  className="rounded-xl px-3 py-2 text-sm font-medium text-slate-600 transition-colors hover:bg-slate-100 hover:text-brand-600"
                 >
                   Compliance
                 </motion.a>
@@ -323,7 +325,7 @@ export default function Header() {
                   transition={{ delay: 0.4 }}
                   href="#contact"
                   onClick={() => setIsMenuOpen(false)}
-                  className="text-gray-700 dark:text-gray-300 hover:text-brand-600 dark:hover:text-brand-400 transition-colors font-medium py-2 px-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800"
+                  className="rounded-xl px-3 py-2 text-sm font-medium text-slate-600 transition-colors hover:bg-slate-100 hover:text-brand-600"
                 >
                   Contact
                 </motion.a>
@@ -333,17 +335,17 @@ export default function Header() {
                     initial={{ x: -20, opacity: 0 }}
                     animate={{ x: 0, opacity: 1 }}
                     transition={{ delay: 0.45 }}
-                    className="pt-2 border-t border-gray-200 dark:border-gray-800"
+                    className="mt-1 border-t border-slate-200 pt-3"
                   >
-                    <div className="flex items-center space-x-2 px-4 py-2 mb-2">
-                      <User className="w-6 h-6 text-gray-400 dark:text-gray-500" />
-                      <span className="text-sm text-gray-700 dark:text-gray-300 font-medium">
+                    <div className="mb-1 flex items-center gap-2 px-3 py-2">
+                      <User className="h-5 w-5 text-slate-400" />
+                      <span className="text-sm font-medium text-slate-600">
                         {user.username}
                       </span>
                     </div>
                     <button
                       onClick={() => { setIsMenuOpen(false); navigate('/dashboard'); }}
-                      className="w-full bg-brand-600 text-white px-4 py-3 rounded-lg hover:bg-brand-700 transition-colors font-medium shadow-soft"
+                      className="w-full rounded-full bg-brand-600 px-4 py-3 text-sm font-semibold text-white shadow-soft transition-colors hover:bg-brand-700"
                     >
                       Go to Dashboard
                     </button>
@@ -358,7 +360,7 @@ export default function Header() {
                       const current = location.pathname + location.search + location.hash;
                       navigate(`/login?returnTo=${encodeURIComponent(current)}`);
                     }}
-                    className="mt-2 bg-brand-600 text-white px-4 py-3 rounded-lg hover:bg-brand-700 transition-colors font-medium shadow-soft"
+                    className="mt-1 rounded-full bg-brand-600 px-4 py-3 text-sm font-semibold text-white shadow-soft transition-colors hover:bg-brand-700"
                   >
                     Sign In
                   </motion.button>

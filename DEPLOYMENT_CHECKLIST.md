@@ -79,10 +79,17 @@ Click this button to deploy instantly:
 5. Wait for SSL certificate provisioning (~24 hours max)
 
 ### 3. **Environment Variables (If Needed Later)**
-If you add backend APIs or third-party services:
-1. Go to **Settings > Environment Variables** in Vercel
-2. Add variables (e.g., `VITE_API_URL`)
-3. Redeploy for changes to take effect
+If you enable the serverless API backend with Supabase:
+1. Go to **Vercel → Project → Settings → Environment Variables**
+2. Add the following (all environments: Production, Preview, Development):
+	```
+	VITE_SUPABASE_URL=...
+	VITE_SUPABASE_ANON_KEY=...
+	SUPABASE_URL=...
+	SUPABASE_SERVICE_KEY=...
+	```
+3. Click Save, then Redeploy
+4. Reference `.env.example` for details
 
 ---
 
